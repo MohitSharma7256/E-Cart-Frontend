@@ -48,12 +48,12 @@ export default function Footer() {
       <Newsletter />
       <section className="footer-section bg-section-2 section-padding bg-dark">
         <div className="container">
-          <div className="row row-cols-1 row-cols-lg-4 g-4">
+          <div className="row row-cols-1 row-cols-lg-4 g-4 text-center text-lg-start">
             <div className="col">
               <div className="footer-widget-6">
                 <img src="/assets/images/E-Cart1.png" className="logo-img mb-3" alt="logo" />
                 <h5 className="text-light mb-3 fw-bold">About Us</h5>
-                <p className="text-light mb-2" style={{ textAlign: "justify" }}>
+                <p className="text-light mb-2">
                   Welcome to E-CART – your trusted destination for seamless online shopping.
                   We're committed to delivering quality products, excellent service, and a
                   shopping experience that's simple, secure, and satisfying. Whether you're
@@ -61,7 +61,7 @@ export default function Footer() {
                 </p>
 
                 <h5 className="text-light mt-3 fw-bold">Follow Us</h5>
-                <div className="social-link d-flex align-items-center gap-2">
+                <div className="social-link d-flex align-items-center justify-content-center justify-content-lg-start gap-2">
                   <Link to={data.facebook} target="_blank" rel="noreferrer">
                     <i className="text-light me-2 fs-4 bi bi-facebook"></i>
                   </Link>

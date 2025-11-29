@@ -7,36 +7,40 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import ProductCard from './ProductCard';
-function getSliderPerView() {
-    if (window.innerWidth < 480)
-        return 2
-    else if (window.innerWidth < 768)
-        return 3
-    else if (window.innerWidth < 992)
-        return 4
-    else
-        return 5
-}
 export default function ProductSlider({ title, data }) {
-    let [sliderPerView, setSlidesPerView] = useState(getSliderPerView())
     let options = {
-        slidesPerView: sliderPerView,
-        spaceBetween: 30,
+        spaceBetween: 15,
         freeMode: true,
-        loop: data.length > sliderPerView,
+        loop: data.length > 5,
         autoplay: {
             delay: 2500,
             disableOnInteraction: false,
         },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            480: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 25,
+            },
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            }
+        },
         modules: [FreeMode, Pagination, Autoplay],
         className: "mySwiper",
-
     }
-
-    window.addEventListener("resize", () => {
-        setSlidesPerView(getSliderPerView())
-    });
-
 
     return (
         <>

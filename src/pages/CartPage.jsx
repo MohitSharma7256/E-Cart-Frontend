@@ -66,7 +66,7 @@ export default function CartPage() {
         const updatedCart = [...cart]
         updatedCart[index] = updatedItem
         setCart(updatedCart)
-        
+
         // Recalculate and auto-select delivery type if needed
         calculateTotalsWithAutoDelivery(updatedCart, deliveryType)
 
@@ -107,7 +107,7 @@ export default function CartPage() {
     // Calculate totals with automatic delivery type selection
     function calculateTotalsWithAutoDelivery(cartItems, selectedDeliveryType) {
         let sum = cartItems.reduce((acc, x) => acc + x.total, 0)
-        
+
         // Auto-select express delivery if subtotal >= 3000
         let autoDeliveryType = selectedDeliveryType
         if (sum >= DELIVERY_CONFIG.EXPRESS_FREE_THRESHOLD) {
@@ -155,7 +155,7 @@ export default function CartPage() {
                 const existingIndex = acc.findIndex(
                     x => x.product?._id === item.product?._id
                 )
-                
+
                 if (existingIndex === -1) {
                     acc.push(item)
                 } else {
@@ -165,7 +165,7 @@ export default function CartPage() {
                 }
                 return acc
             }, [])
-            
+
             setCart(uniqueCart)
             calculateTotalsWithAutoDelivery(uniqueCart, deliveryType)
         }
@@ -195,73 +195,67 @@ export default function CartPage() {
                             ) : (
                                 cart.map((item) => {
                                     return (
-                                        <div className="card rounded-0 mb-3" key={item._id}>
-                                            <div className="card-body">
-                                                <div className="d-flex flex-column flex-lg-row gap-3">
-                                                    <div className="product-img">
+                                        <div className="card rounded-0 mb-3 border-0 shadow-sm" key={item._id}>
+                                            <div className="card-body p-2 p-md-3">
+                                                <div className="d-flex flex-row gap-3">
+                                                    <div className="product-img flex-shrink-0">
                                                         <img
                                                             src={`${import.meta.env.VITE_SITE_IMAGE_SERVER}/${item.product?.pic[0]}`}
-                                                            width="200px"
-                                                            height="200px"
+                                                            className="img-fluid rounded object-fit-cover"
+                                                            style={{ width: '100px', height: '100px' }}
                                                             alt={item.product?.name}
+                                                            loading="lazy"
                                                         />
                                                     </div>
 
                                                     <div className="product-info flex-grow-1">
-                                                        <h5 className="fw-bold mb-0">{item.product?.name}</h5>
-                                                        <h6 className="fw-bold mb-0">({item.product?.stockQuantity} Left In Stock)</h6>
-
-                                                        <div className="product-price d-flex align-items-center gap-2 mt-3">
-                                                            <div className="h6 fw-bold">
-                                                                ₹{item.product?.finalPrice} x {item.quantity} = ₹{item.total}
+                                                        <div className="d-flex justify-content-between align-items-start">
+                                                            <div>
+                                                                <h6 className="fw-bold mb-1 text-truncate-2" style={{ fontSize: '0.95rem' }}>{item.product?.name}</h6>
+                                                                <small className="text-muted d-block mb-1">
+                                                                    {item.color} | {item.size}
+                                                                </small>
+                                                            </div>
+                                                            <div className="text-end ms-2">
+                                                                <h6 className="fw-bold mb-0">₹{item.total}</h6>
+                                                                <small className="text-muted" style={{ fontSize: '0.75rem' }}>
+                                                                    ₹{item.product?.finalPrice} x {item.quantity}
+                                                                </small>
                                                             </div>
                                                         </div>
 
-                                                        <div className="mt-3 hstack gap-2">
-                                                            <button type="button" className="btn btn-sm btn-light border rounded-0">
-                                                                Size: {item.size}
-                                                            </button>
-                                                            <button type="button" className="btn btn-sm btn-light border rounded-0">
-                                                                Color: {item.color}
-                                                            </button>
-                                                        </div>
-
-                                                        <div className='mt-3'>
-                                                            <div className="btn-group">
-                                                                <button className='btn btn-sm btn-dark'
+                                                        <div className="d-flex align-items-center justify-content-between mt-3 flex-wrap gap-2">
+                                                            <div className="btn-group btn-group-sm">
+                                                                <button className='btn btn-outline-dark'
                                                                     onClick={() => updateRecord('DEC', item._id)}>
-                                                                    <i className='bi bi-dash fs-5'></i>
+                                                                    <i className='bi bi-dash'></i>
                                                                 </button>
-
-                                                                <h3 style={{ width: 50 }}
-                                                                    className='text-center'>{item.quantity}</h3>
-
-                                                                <button className='btn btn-sm btn-dark'
+                                                                <button className='btn btn-outline-dark px-3' disabled>
+                                                                    {item.quantity}
+                                                                </button>
+                                                                <button className='btn btn-outline-dark'
                                                                     onClick={() => updateRecord('INC', item._id)}>
-                                                                    <i className='bi bi-plus fs-5'></i>
+                                                                    <i className='bi bi-plus'></i>
+                                                                </button>
+                                                            </div>
+
+                                                            <div className="d-flex gap-2">
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-sm btn-light text-danger"
+                                                                    onClick={() => deleteRecord(item._id)}
+                                                                >
+                                                                    <i className="bi bi-trash"></i>
+                                                                </button>
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-sm btn-light"
+                                                                    onClick={() => addToWishlist(item.product?._id)}
+                                                                >
+                                                                    <i className="bi bi-heart"></i>
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div className="d-none d-lg-block vr"></div>
-
-                                                    <div className="d-grid gap-2 align-self-start align-self-lg-center">
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-ecomm"
-                                                            onClick={() => deleteRecord(item._id)}
-                                                        >
-                                                            <i className="bi bi-x-lg me-2"></i>Remove
-                                                        </button>
-
-                                                        <button
-                                                            type="button"
-                                                            className="btn dark btn-ecomm"
-                                                            onClick={() => addToWishlist(item.product?._id)}
-                                                        >
-                                                            <i className="bi bi-suit-heart me-2"></i>Move to Wishlist
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -278,7 +272,7 @@ export default function CartPage() {
                                     <div className="card rounded-0 mb-3">
                                         <div className="card-body">
                                             <h5 className="fw-bold mb-3">Delivery Options</h5>
-                                            
+
                                             {/* Auto-selection message */}
                                             {subtotal >= DELIVERY_CONFIG.EXPRESS_FREE_THRESHOLD && (
                                                 <div className="alert alert-success py-2 px-3 mb-3">

@@ -52,211 +52,105 @@ function HomePage() {
             data-bs-ride="carousel"
           >
             <div className="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="0"
-                className="active"
-                aria-current="true"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptors"
-                data-bs-slide-to="3"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="4"
-              ></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></button>
             </div>
             <div className="carousel-inner">
               <div className="carousel-item active bg-primary">
-                <div className="row d-flex align-items-center">
-                  <div className="col d-none d-lg-flex justify-content-center">
-                    <div className="">
-                      <h3 className="h3 fw-light text-white fw-bold">
-                        New Arrival
-                      </h3>
-                      <h1 className="h1 text-white fw-bold">Women Fashion</h1>
-                      <p className="text-white fw-bold">
-                        <i>Last call for upto 25%</i>
-                      </p>
+                <div className="row d-flex align-items-center flex-column-reverse flex-lg-row py-4 py-lg-0">
+                  <div className="col-12 col-lg-6 d-flex justify-content-center text-center text-lg-start mb-4 mb-lg-0">
+                    <div className="px-3">
+                      <h3 className="h3 fw-light text-white fw-bold">New Arrival</h3>
+                      <h1 className="h1 text-white fw-bold display-4">Women Fashion</h1>
+                      <p className="text-white fw-bold"><i>Last call for upto 25%</i></p>
                       <div className="">
-                        <Link
-                          className="btn btn-dark btn-ecomm"
-                          to="/shop?mc=Female"
-                        >
-                          Shop Now
-                        </Link>
+                        <Link className="btn btn-dark btn-ecomm" to="/shop?mc=Female">Shop Now</Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <img
-                      src="assets/images/sliders/s_1.webp"
-                      className="img-fluid"
-                      alt="..."
-                    />
+                  <div className="col-12 col-lg-6">
+                    <img src="assets/images/sliders/s_1.webp" className="img-fluid" alt="..." />
                   </div>
                 </div>
               </div>
               <div className="carousel-item bg-red">
-                <div className="row d-flex align-items-center">
-                  <div className="col d-none d-lg-flex justify-content-center">
-                    <div className="">
-                      <h3 className="h3 fw-light text-white fw-bold">
-                        Latest Trending
-                      </h3>
-                      <h1 className="h1 text-white fw-bold">Fashion Wear</h1>
-                      <p className="text-white fw-bold">
-                        <i>Last call for upto 35%</i>
-                      </p>
+                <div className="row d-flex align-items-center flex-column-reverse flex-lg-row py-4 py-lg-0">
+                  <div className="col-12 col-lg-6 d-flex justify-content-center text-center text-lg-start mb-4 mb-lg-0">
+                    <div className="px-3">
+                      <h3 className="h3 fw-light text-white fw-bold">Latest Trending</h3>
+                      <h1 className="h1 text-white fw-bold display-4">Fashion Wear</h1>
+                      <p className="text-white fw-bold"><i>Last call for upto 35%</i></p>
                       <div className="">
-                        
-                        <Link
-                          className="btn btn-dark btn-ecomm"
-                          to="/shop?mc=Male"
-                        >
-                          Shop Now
-                        </Link>
+                        <Link className="btn btn-dark btn-ecomm" to="/shop?mc=Male">Shop Now</Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <img
-                      src="assets/images/sliders/s_2.webp"
-                      className="img-fluid"
-                      alt="..."
-                    />
+                  <div className="col-12 col-lg-6">
+                    <img src="assets/images/sliders/s_2.webp" className="img-fluid" alt="..." />
                   </div>
                 </div>
               </div>
               <div className="carousel-item bg-purple">
-                <div className="row d-flex align-items-center">
-                  <div className="col d-none d-lg-flex justify-content-center">
-                    <div className="">
-                      <h3 className="h3 fw-light text-white fw-bold">
-                        New Trending
-                      </h3>
-                      <h1 className="h1 text-white fw-bold">Kids Fashion</h1>
-                      <p className="text-white fw-bold">
-                        <i>Last call for upto 15%</i>
-                      </p>
+                <div className="row d-flex align-items-center flex-column-reverse flex-lg-row py-4 py-lg-0">
+                  <div className="col-12 col-lg-6 d-flex justify-content-center text-center text-lg-start mb-4 mb-lg-0">
+                    <div className="px-3">
+                      <h3 className="h3 fw-light text-white fw-bold">New Trending</h3>
+                      <h1 className="h1 text-white fw-bold display-4">Kids Fashion</h1>
+                      <p className="text-white fw-bold"><i>Last call for upto 15%</i></p>
                       <div className="">
-                        <Link
-                          className="btn btn-dark btn-ecomm"
-                          to="/shop?mc=Kids"
-                        >
-                          Shop Now
-                        </Link>
+                        <Link className="btn btn-dark btn-ecomm" to="/shop?mc=Kids">Shop Now</Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <img
-                      src="assets/images/sliders/s_3.webp"
-                      className="img-fluid"
-                      alt="..."
-                    />
+                  <div className="col-12 col-lg-6">
+                    <img src="assets/images/sliders/s_3.webp" className="img-fluid" alt="..." />
                   </div>
                 </div>
               </div>
               <div className="carousel-item bg-yellow">
-                <div className="row d-flex align-items-center">
-                  <div className="col d-none d-lg-flex justify-content-center">
-                    <div className="">
-                      <h3 className="h3 fw-light text-dark fw-bold">
-                        Latest Trending
-                      </h3>
-                      <h1 className="h1 text-dark fw-bold">
-                        Electronics Items
-                      </h1>
-                      <p className="text-dark fw-bold">
-                        <i>Last call for upto 45%</i>
-                      </p>
+                <div className="row d-flex align-items-center flex-column-reverse flex-lg-row py-4 py-lg-0">
+                  <div className="col-12 col-lg-6 d-flex justify-content-center text-center text-lg-start mb-4 mb-lg-0">
+                    <div className="px-3">
+                      <h3 className="h3 fw-light text-dark fw-bold">Latest Trending</h3>
+                      <h1 className="h1 text-dark fw-bold display-4">Electronics Items</h1>
+                      <p className="text-dark fw-bold"><i>Last call for upto 45%</i></p>
                       <div className="">
-                        <Link
-                          className="btn btn-dark btn-ecomm"
-                          to="/shop?mc=Electronics"
-                        >
-                          Shop Now
-                        </Link>
+                        <Link className="btn btn-dark btn-ecomm" to="/shop?mc=Electronics">Shop Now</Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <img
-                      src="assets/images/sliders/s_4.webp"
-                      className="img-fluid"
-                      alt="..."
-                    />
+                  <div className="col-12 col-lg-6">
+                    <img src="assets/images/sliders/s_4.webp" className="img-fluid" alt="..." />
                   </div>
                 </div>
               </div>
               <div className="carousel-item bg-green">
-                <div className="row d-flex align-items-center">
-                  <div className="col d-none d-lg-flex justify-content-center">
-                    <div className="">
-                      <h3 className="h3 fw-light text-white fw-bold">
-                        Super Deals
-                      </h3>
-                      <h1 className="h1 text-white fw-bold">Home Furniture</h1>
-                      <p className="text-white fw-bold">
-                        <i>Last call for upto 24%</i>
-                      </p>
+                <div className="row d-flex align-items-center flex-column-reverse flex-lg-row py-4 py-lg-0">
+                  <div className="col-12 col-lg-6 d-flex justify-content-center text-center text-lg-start mb-4 mb-lg-0">
+                    <div className="px-3">
+                      <h3 className="h3 fw-light text-white fw-bold">Super Deals</h3>
+                      <h1 className="h1 text-white fw-bold display-4">Home Furniture</h1>
+                      <p className="text-white fw-bold"><i>Last call for upto 24%</i></p>
                       <div className="">
-                        <Link
-                          className="btn btn-dark btn-ecomm"
-                          to="/shop?mc=Furniture"
-                        >
-                          Shop Now
-                        </Link>
+                        <Link className="btn btn-dark btn-ecomm" to="/shop?mc=Furniture">Shop Now</Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <img
-                      src="assets/images/sliders/s_5.webp"
-                      className="img-fluid"
-                      alt="..."
-                    />
+                  <div className="col-12 col-lg-6">
+                    <img src="assets/images/sliders/s_5.webp" className="img-fluid" alt="..." />
                   </div>
                 </div>
               </div>
             </div>
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
+            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
+            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Next</span>
             </button>
           </div>
@@ -272,7 +166,7 @@ function HomePage() {
 
         {/* <ProductSlider /> */}
 
-        <Products data={(Array.isArray(ProductStateData)?ProductStateData:[]).filter(x=>x.active)} category={MaincategoryStateData.filter(x=>x.active)} />
+        <Products data={(Array.isArray(ProductStateData) ? ProductStateData : []).filter(x => x.active)} category={MaincategoryStateData.filter(x => x.active)} />
 
         <Features />
 
@@ -280,8 +174,8 @@ function HomePage() {
 
         <BrandsSlider />
 
-        <CategorySlider title="Maincategory" data={MaincategoryStateData.filter(x=>x.active)}/>
-        <CategorySlider title="Subcategory" data={SubcategoryStateData.filter(x=>x.active)}/>
+        <CategorySlider title="Maincategory" data={MaincategoryStateData.filter(x => x.active)} />
+        <CategorySlider title="Subcategory" data={SubcategoryStateData.filter(x => x.active)} />
 
 
       </div>

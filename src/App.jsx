@@ -1,176 +1,173 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import HomePage from "./pages/HomePage";
-import ShopPage from "./pages/ShopPage";
-import AboutPage from "./pages/AboutPage";
-import ContactUs from "./pages/ContactUs";
-import Dashboard from "./pages/Dashboard";
-import OrdersPage from "./pages/OrdersPage";
-import ProfilePage from "./pages/ProfilePage";
-import EditProfilePage from "./pages/EditProfilePage";
-import SaveAddress from "./pages/SaveAddress";
-import WishlistPage from "./pages/WishlistPage";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import CartPage from "./pages/CartPage";
-import ProductPage from "./pages/ProductPage";
-import OrderConfirmation from "./pages/OrderConfirmation";
-import ErrorPage from "./pages/ErrorPage.js";
-import FeaturePage from "./pages/FeaturePage.jsx";
-import TestimonialPage from "./pages/TestimonialPage.jsx";
-import AdminHomePage from "./pages/Admin/AdminHomePage.jsx";
-import AdminMaincategoryPage from "./pages/Admin/MainCategory/AdminMaincategoryPage.jsx";
-import AdminMaincategoryCreatePage from "./pages/Admin/MainCategory/AdminMaincategoryCreatePage.jsx";
-import AdminMaincategoryUpdatePage from "./pages/Admin/MainCategory/AdminMaincategoryUpdatePage.jsx";
-import AdminSubcategoryPage from "./pages/Admin/SubCategory/AdminSubcategoryPage.jsx";
-import AdminSubcategoryCreatePage from "./pages/Admin/SubCategory/AdminSubcategoryCreatePage.jsx";
-import AdminSubcategoryUpdatePage from "./pages/Admin/SubCategory/AdminSubcategoryUpdatePage.jsx";
-import AdminBrandPage from "./pages/Admin/Brand/AdminBrandPage.jsx";
-import AdminBrandCreatePage from "./pages/Admin/Brand/AdminBrandCreatePage.jsx";
-import AdminBrandUpdatePage from "./pages/Admin/Brand/AdminBrandUpdatePage.jsx";
-import AdminFeaturePage from "./pages/Admin/Feature/AdminFeaturePage.jsx";
-import AdminFeatureCreatePage from "./pages/Admin/Feature/AdminFeatureCreatePage.jsx";
-import AdminFeatureUpdatePage from "./pages/Admin/Feature/AdminFeatureUpdatePage.jsx";
-import AdminFaqPage from "./pages/Admin/Faq/AdminFaqPage.jsx";
-import AdminFaqCreatePage from "./pages/Admin/Faq/AdminFaqCreatePage.jsx";
-import AdminFaqUpdatePage from "./pages/Admin/Faq/AdminFaqUpdatePage.jsx";
-import AdminProductPage from "./pages/Admin/Product/AdminProductPage.jsx";
-import AdminProductCreatePage from "./pages/Admin/Product/AdminProductCreatePage.jsx";
-import AdminProductUpdatePage from "./pages/Admin/Product/AdminProductUpdatePage.jsx";
-import AdminSettingPage from "./pages/Admin/SettingPage/AdminSettingPage.jsx";
-import UpdateProfile from "./pages/UpdateProfile.jsx";
-import BuyerAddress from "./pages/BuyerAddress.jsx";
-import CheckoutPage from "./pages/CheckoutPage.jsx";
-import PaymentPage from "./pages/PaymentPage.jsx";
-import AdminNewsletterPage from "./pages/Admin/Newsletter/AdminNewsletterPage.jsx";
-import AdminContactUsPage from "./pages/Admin/ContactUs/AdminContactUsPage.jsx";
-import AdminContactUsShowPage from "./pages/Admin/ContactUs/AdminContactUsShowPage.jsx";
-import AdminCheckoutShowPage from "./pages/Admin/Checkout/AdminCheckoutShowPage.jsx";
-import AdminCheckoutPage from "./pages/Admin/Checkout/AdminCheckoutPage.jsx";
-import ForgetPassword1 from "./pages/ForgatePassword1.jsx";
-import ForgetPassword2 from "./pages/ForgatePassword2.jsx";
-import ForgetPassword3 from "./pages/ForgatePassword3.jsx";
-import AdminUserPage from "./pages/Admin/User/AdminUserPage.jsx";
-import AdminUserCreatePage from "./pages/Admin/User/AdminUserCreatePage.jsx";
-import AdminUserUpdatePage from "./pages/Admin/User/AdminUserUpdatePage.jsx";
+import Loading from "./components/Loading";
 
-// app.jsx
+// Lazy load pages
+const HomePage = lazy(() => import("./pages/HomePage"));
+const ShopPage = lazy(() => import("./pages/ShopPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const OrdersPage = lazy(() => import("./pages/OrdersPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const EditProfilePage = lazy(() => import("./pages/EditProfilePage"));
+const SaveAddress = lazy(() => import("./pages/SaveAddress"));
+const WishlistPage = lazy(() => import("./pages/WishlistPage"));
+const Signup = lazy(() => import("./pages/Signup"));
+const Login = lazy(() => import("./pages/Login"));
+const CartPage = lazy(() => import("./pages/CartPage"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
+const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage.js"));
+const FeaturePage = lazy(() => import("./pages/FeaturePage.jsx"));
+const TestimonialPage = lazy(() => import("./pages/TestimonialPage.jsx"));
+const AdminHomePage = lazy(() => import("./pages/Admin/AdminHomePage.jsx"));
+const AdminMaincategoryPage = lazy(() => import("./pages/Admin/MainCategory/AdminMaincategoryPage.jsx"));
+const AdminMaincategoryCreatePage = lazy(() => import("./pages/Admin/MainCategory/AdminMaincategoryCreatePage.jsx"));
+const AdminMaincategoryUpdatePage = lazy(() => import("./pages/Admin/MainCategory/AdminMaincategoryUpdatePage.jsx"));
+const AdminSubcategoryPage = lazy(() => import("./pages/Admin/SubCategory/AdminSubcategoryPage.jsx"));
+const AdminSubcategoryCreatePage = lazy(() => import("./pages/Admin/SubCategory/AdminSubcategoryCreatePage.jsx"));
+const AdminSubcategoryUpdatePage = lazy(() => import("./pages/Admin/SubCategory/AdminSubcategoryUpdatePage.jsx"));
+const AdminBrandPage = lazy(() => import("./pages/Admin/Brand/AdminBrandPage.jsx"));
+const AdminBrandCreatePage = lazy(() => import("./pages/Admin/Brand/AdminBrandCreatePage.jsx"));
+const AdminBrandUpdatePage = lazy(() => import("./pages/Admin/Brand/AdminBrandUpdatePage.jsx"));
+const AdminFeaturePage = lazy(() => import("./pages/Admin/Feature/AdminFeaturePage.jsx"));
+const AdminFeatureCreatePage = lazy(() => import("./pages/Admin/Feature/AdminFeatureCreatePage.jsx"));
+const AdminFeatureUpdatePage = lazy(() => import("./pages/Admin/Feature/AdminFeatureUpdatePage.jsx"));
+const AdminFaqPage = lazy(() => import("./pages/Admin/Faq/AdminFaqPage.jsx"));
+const AdminFaqCreatePage = lazy(() => import("./pages/Admin/Faq/AdminFaqCreatePage.jsx"));
+const AdminFaqUpdatePage = lazy(() => import("./pages/Admin/Faq/AdminFaqUpdatePage.jsx"));
+const AdminProductPage = lazy(() => import("./pages/Admin/Product/AdminProductPage.jsx"));
+const AdminProductCreatePage = lazy(() => import("./pages/Admin/Product/AdminProductCreatePage.jsx"));
+const AdminProductUpdatePage = lazy(() => import("./pages/Admin/Product/AdminProductUpdatePage.jsx"));
+const AdminSettingPage = lazy(() => import("./pages/Admin/SettingPage/AdminSettingPage.jsx"));
+const UpdateProfile = lazy(() => import("./pages/UpdateProfile.jsx"));
+const BuyerAddress = lazy(() => import("./pages/BuyerAddress.jsx"));
+const CheckoutPage = lazy(() => import("./pages/CheckoutPage.jsx"));
+const PaymentPage = lazy(() => import("./pages/PaymentPage.jsx"));
+const AdminNewsletterPage = lazy(() => import("./pages/Admin/Newsletter/AdminNewsletterPage.jsx"));
+const AdminContactUsPage = lazy(() => import("./pages/Admin/ContactUs/AdminContactUsPage.jsx"));
+const AdminContactUsShowPage = lazy(() => import("./pages/Admin/ContactUs/AdminContactUsShowPage.jsx"));
+const AdminCheckoutShowPage = lazy(() => import("./pages/Admin/Checkout/AdminCheckoutShowPage.jsx"));
+const AdminCheckoutPage = lazy(() => import("./pages/Admin/Checkout/AdminCheckoutPage.jsx"));
+const ForgetPassword1 = lazy(() => import("./pages/ForgatePassword1.jsx"));
+const ForgetPassword2 = lazy(() => import("./pages/ForgatePassword2.jsx"));
+const ForgetPassword3 = lazy(() => import("./pages/ForgatePassword3.jsx"));
+const AdminUserPage = lazy(() => import("./pages/Admin/User/AdminUserPage.jsx"));
+const AdminUserCreatePage = lazy(() => import("./pages/Admin/User/AdminUserCreatePage.jsx"));
+const AdminUserUpdatePage = lazy(() => import("./pages/Admin/User/AdminUserUpdatePage.jsx"));
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        {/* Pages */}
-        <Route path="" element={<HomePage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/featurespage" element={<FeaturePage />} />
-        <Route path="/testimonialpage" element={<TestimonialPage />} />
-        <Route path="/product" element={<ProductPage />} />
-        <Route path="/product/:_id" element={<ProductPage />} />
-        <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forget-password1" element={<ForgetPassword1 />} />
-        <Route path="/forget-password2" element={<ForgetPassword2 />} />
-        <Route path="/forget-password3" element={<ForgetPassword3 />} />
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          {/* Pages */}
+          <Route path="" element={<HomePage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/featurespage" element={<FeaturePage />} />
+          <Route path="/testimonialpage" element={<TestimonialPage />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/product/:_id" element={<ProductPage />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forget-password1" element={<ForgetPassword1 />} />
+          <Route path="/forget-password2" element={<ForgetPassword2 />} />
+          <Route path="/forget-password3" element={<ForgetPassword3 />} />
 
+          {/* Buyer Routes */}
+          {
+            localStorage.getItem("login") ?
+              <>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/orders" element={<OrdersPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path='/update-profile' element={<UpdateProfile />} />
+                <Route path='/buyer-address' element={<BuyerAddress />} />
+                <Route path="/editprofile" element={<EditProfilePage />} />
+                <Route path="/saveaddress" element={<SaveAddress />} />
+                <Route path="/wishlist" element={<WishlistPage />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/payment" element={<PaymentPage />} />
+                <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              </> : null
+          }
 
+          {/* Admin Page */}
+          {
+            localStorage.getItem("login") && localStorage.getItem("role") !== "Buyer" ?
+              <>
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminHomePage />} />
 
+                {/* Main Category Routes */}
+                <Route path="/admin/maincategory" element={<AdminMaincategoryPage />} />
+                <Route path="/admin/maincategory/create" element={<AdminMaincategoryCreatePage />} />
+                <Route path="/admin/maincategory/edit/:_id" element={<AdminMaincategoryUpdatePage />} />
 
-        {/* Buyer Routes */}
+                {/* Sub Category Routes */}
+                <Route path="/admin/subcategory" element={<AdminSubcategoryPage />} />
+                <Route path="/admin/subcategory/create" element={<AdminSubcategoryCreatePage />} />
+                <Route path="/admin/subcategory/edit/:_id" element={<AdminSubcategoryUpdatePage />} />
 
-        {
-          localStorage.getItem("login") ?
-            <>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/orders" element={<OrdersPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path='/update-profile' element={<UpdateProfile />} />
-              <Route path='/buyer-address' element={<BuyerAddress />} />
-              <Route path="/editprofile" element={<EditProfilePage />} />
-              <Route path="/saveaddress" element={<SaveAddress />} />
-              <Route path="/wishlist" element={<WishlistPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/payment" element={<PaymentPage />} />
-              <Route path="/order-confirmation" element={<OrderConfirmation />} />
-            </> : null
-        }
+                {/* Brand Routes */}
+                <Route path="/admin/brand" element={<AdminBrandPage />} />
+                <Route path="/admin/brand/create" element={<AdminBrandCreatePage />} />
+                <Route path="/admin/brand/edit/:_id" element={<AdminBrandUpdatePage />} />
 
-        {/* Admin Page */}
-        {
-          localStorage.getItem("login") && localStorage.getItem("role") !== "Buyer" ?  // isme condition ye hai ki buyer ko chorke Admin or Super Admin access kar sakenge 
-            <>
-              {/* Admin Routes */}
-              <Route path="/admin" element={<AdminHomePage />} />
+                {/* Feature Routes */}
+                <Route path="/admin/feature" element={<AdminFeaturePage />} />
+                <Route path="/admin/feature/create" element={<AdminFeatureCreatePage />} />
+                <Route path="/admin/feature/edit/:_id" element={<AdminFeatureUpdatePage />} />
 
-              {/* Main Category Routes */}
-              <Route path="/admin/maincategory" element={<AdminMaincategoryPage />} />
-              <Route path="/admin/maincategory/create" element={<AdminMaincategoryCreatePage />} />
-              <Route path="/admin/maincategory/edit/:_id" element={<AdminMaincategoryUpdatePage />} />
+                {/* FAQ Routes */}
+                <Route path="/admin/faq" element={<AdminFaqPage />} />
+                <Route path="/admin/faq/create" element={<AdminFaqCreatePage />} />
+                <Route path="/admin/faq/edit/:_id" element={<AdminFaqUpdatePage />} />
 
-              {/* Sub Category Routes */}
-              <Route path="/admin/subcategory" element={<AdminSubcategoryPage />} />
-              <Route path="/admin/subcategory/create" element={<AdminSubcategoryCreatePage />} />
-              <Route path="/admin/subcategory/edit/:_id" element={<AdminSubcategoryUpdatePage />} />
+                {/* Product Routes */}
+                <Route path="/admin/product" element={<AdminProductPage />} />
+                <Route path="/admin/product/create" element={<AdminProductCreatePage />} />
+                <Route path="/admin/product/edit/:_id" element={<AdminProductUpdatePage />} />
 
-              {/* Brand Routes */}
-              <Route path="/admin/brand" element={<AdminBrandPage />} />
-              <Route path="/admin/brand/create" element={<AdminBrandCreatePage />} />
-              <Route path="/admin/brand/edit/:_id" element={<AdminBrandUpdatePage />} />
+                {/* Setting Routes */}
+                <Route path="/admin/setting" element={<AdminSettingPage />} />
 
-              {/* Feature Routes */}
-              <Route path="/admin/feature" element={<AdminFeaturePage />} />
-              <Route path="/admin/feature/create" element={<AdminFeatureCreatePage />} />
-              <Route path="/admin/feature/edit/:_id" element={<AdminFeatureUpdatePage />} />
+                {/* News letter routes */}
+                <Route path="/admin/newsletter" element={<AdminNewsletterPage />} />
 
-              {/* Feature Routes */}
-              <Route path="/admin/faq" element={<AdminFaqPage />} />
-              <Route path="/admin/faq/create" element={<AdminFaqCreatePage />} />
-              <Route path="/admin/faq/edit/:_id" element={<AdminFaqUpdatePage />} />
+                {/* Admin ContactUs Routes */}
+                <Route path="/admin/contactus" element={<AdminContactUsPage />} />
+                <Route path="/admin/contactus/show/:_id" element={<AdminContactUsShowPage />} />
 
-              {/* Product Routes */}
-              <Route path="/admin/product" element={<AdminProductPage />} />
-              <Route path="/admin/product/create" element={<AdminProductCreatePage />} />
-              <Route path="/admin/product/edit/:_id" element={<AdminProductUpdatePage />} />
+                {/* Admin Checkouts routes */}
+                <Route path="/admin/checkout" element={<AdminCheckoutPage />} />
+                <Route path="/admin/checkout/show/:_id" element={<AdminCheckoutShowPage />} />
 
+                {/* Super Admin Routes */}
+                {
+                  localStorage.getItem("role") === "Super Admin" ?
+                    <>
+                      <Route path="/admin/user" element={<AdminUserPage />} />
+                      <Route path="/admin/user/create" element={<AdminUserCreatePage />} />
+                      <Route path="/admin/user/edit/:_id" element={<AdminUserUpdatePage />} />
+                    </> : null
+                }
 
-              {/* setting Routes */}
-              <Route path="/admin/setting" element={<AdminSettingPage />} />
+              </> : null
+          }
 
-              {/* News letter routes */}
-              <Route path="/admin/newsletter" element={<AdminNewsletterPage />} />
+          {/* Error Message */}
+          <Route path="/*" element={<ErrorPage />} />
 
-              {/*  Admin ContactUs Routes */}
-              <Route path="/admin/contactus" element={<AdminContactUsPage />} />
-              <Route path="/admin/contactus/show/:_id" element={<AdminContactUsShowPage />} />
-
-              {/* Admin Checkouts routes */}
-              <Route path="/admin/checkout" element={<AdminCheckoutPage />} />
-              <Route path="/admin/checkout/show/:_id" element={<AdminCheckoutShowPage />} />
-
-              {/* isme condition Super Admin Check karegi jo hoga wahi access karega  */}
-              {
-                localStorage.getItem("role") === "Super Admin" ?
-                  <>
-                    <Route path="/admin/user" element={<AdminUserPage />} />
-                    <Route path="/admin/user/create" element={<AdminUserCreatePage />} />
-                    <Route path="/admin/user/edit/:_id" element={<AdminUserUpdatePage />} />
-
-                  </> : null
-              }
-
-            </> : null
-        }
-
-        {/* Error Message */}
-        <Route path="/*" element={<ErrorPage />} />
-
-      </Routes>
+        </Routes>
+      </Suspense>
       <Footer />
     </BrowserRouter>
   );

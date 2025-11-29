@@ -508,7 +508,7 @@ export default function CheckoutPage() {
 
                         {/* Right Column - Order Summary */}
                         <div className="col-12 col-lg-6">
-                            <div className="card rounded-0 sticky-top" style={{ top: '20px' }}>
+                            <div className="card rounded-0 sticky-lg-top" style={{ top: '80px', zIndex: 1 }}>
                                 <div className="card-body">
                                     <h5 className="fw-bold mb-4 text-center">Order Summary</h5>
 
@@ -524,6 +524,7 @@ export default function CheckoutPage() {
                                                             height="80"
                                                             className="rounded me-3"
                                                             alt={item.product?.name}
+                                                            loading="lazy"
                                                             onError={(e) => {
                                                                 e.target.src = 'https://via.placeholder.com/80'
                                                             }}
