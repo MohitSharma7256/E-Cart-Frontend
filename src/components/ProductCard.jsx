@@ -4,117 +4,99 @@ import { Link } from 'react-router-dom';
 export default function ProductCard({ item }) {
     return (
         <div className="h-100">
-            <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden product-card position-relative transition-all">
+            <div className="card h-100 border-0 shadow-sm rounded-3 overflow-hidden product-card position-relative bg-white dark:bg-gray-800 transition-all duration-300">
                 
-                {/* Image Container */}
+                {/* Image */}
                 <div className="position-relative overflow-hidden">
                     <Link to={`/product/${item._id}`}>
                         <div className="ratio ratio-1x1">
                             <img
                                 src={`${import.meta.env.VITE_SITE_IMAGE_SERVER}/${item.pic[0]}`}
-                                className="card-img-top object-fit-cover"
+                                className="card-img-top object-fit-cover hover:scale-110 transition-transform duration-500"
                                 alt={item.name}
                                 loading="lazy"
-                                style={{ transition: 'transform 0.4s ease' }}
                             />
                         </div>
                     </Link>
 
-                    {/* Discount Badge */}
+                    {/* Discount Badge - Works in both modes */}
                     {item.discount > 0 && (
-                        <div className="position-absolute top-0 start-0 m-3 bg-danger text-white px-3 py-1 rounded-pill fw-bold shadow-sm"
-                             style={{ fontSize: '13px', zIndex: 10 }}>
+                        <div className="position-absolute top-0 start-0 m-3 bg-danger text-white px-3 py-1.5 rounded-full text-sm font-bold shadow-lg z-10">
                             {item.discount}% OFF
                         </div>
                     )}
 
-                    {/* Top Right Wishlist (appears on hover) */}
-                    <button className="position-absolute top-0 end-0 m-3 btn p-2 rounded-circle bg-white shadow-sm opacity-0 wishlist-top">
-                        <i className="far fa-heart text-danger fs-5"></i>
+                    {/* Top Right Wishlist - Hover pe dikhega */}
+                    <button className="position-absolute top-0 end-0 m-3 btn p-2 rounded-circle bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-lg opacity-0 wishlist-top transition-all duration-300 hover:text-red-500">
+                        <i className="far fa-heart text-xl"></i>
                     </button>
                 </div>
 
                 {/* Card Body */}
-                <div className="card-body d-flex flex-column p-3 p-md-4">
+                <div className="card-body p-4 d-flex flex-column">
 
                     {/* Brand */}
-                    <p className="text-muted small text-uppercase fw-semibold mb-1">
-                        {item.brand?.name || 'Brand'}
+                    <p className="text-muted dark:text-gray-400 small font-semibold tracking-wider mb-1">
+                        {item.brand?.name || 'BRAND'}
                     </p>
 
                     {/* Product Name */}
-                    <Link to={`/product/${item._id}`} className="text-decoration-none text-dark mb-3 flex-grow-1">
-                        <h6 className="fw-bold line-clamp-2" style={{ lineHeight: '1.4' }}>
+                    <Link to={`/product/${item._id}`} className="text-decoration-none mb-3 flex-grow-1">
+                        <h6 className="font-bold text-gray-900 dark:text-gray-100 line-clamp-2 leading-tight">
                             {item.name}
                         </h6>
                     </Link>
 
-                    {/* Bottom Action Row */}
+                    {/* Bottom Row - Heart → Base Price → Final Price → Cart */}
                     <div className="d-flex align-items-center justify-content-between mt-auto">
 
-                        {/* Bottom Wishlist Heart */}
-                        <button className="btn btn-link p-0 text-secondary wishlist-bottom">
-                            <i className="far fa-heart fs-4"></i>
+                        {/* Bottom Wishlist */}
+                        <button className="text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-500 transition-all wishlist-bottom">
+                            <i className="far fa-heart text-2xl"></i>
                         </button>
 
-                        {/* Price Section */}
-                        <div className="text-center flex-grow-1 px-2">
+                        {/* Prices */}
+                        <div className="text-center">
                             {item.basePrice > item.finalPrice ? (
                                 <>
-                                    <div className="text-decoration-line-through text-muted small fw-medium">
+                                    <div className="text-gray-500 dark:text-gray-500 text-sm line-through">
+, font-medium">
                                         ₹{item.basePrice.toLocaleString()}
                                     </div>
-                                    <div className="fw-bold text-success fs-5">
+                                    <div className="text-xl font-bold text-success dark:text-green-400">
                                         ₹{item.finalPrice.toLocaleString()}
                                     </div>
                                 </>
                             ) : (
-                                <div className="fw-bold text-success fs-5">
+                                <div className="text-xl font-bold text-success dark:text-green-400">
                                     ₹{item.finalPrice.toLocaleString()}
                                 </div>
                             )}
                         </div>
 
                         {/* Cart Button */}
-                        <button className="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm cart-btn">
+                        <button className="bg-black dark:bg-white text-white dark:text-black rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:scale-110 transition-all cart-btn">
                             <i className="fas fa-shopping-bag"></i>
                         </button>
                     </div>
                 </div>
 
-                {/* Global Styles for This Card */}
+                {/* Perfect Hover + Dark Mode Styles */}
                 <style jsx>{`
                     .product-card {
                         transition: all 0.35s ease;
-                        cursor: pointer;
                     }
                     .product-card:hover {
-                        transform: translateY(-8px);
-                        box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
-                    }
-                    .product-card:hover img {
-                        transform: scale(1.08);
+                        transform: translateY(-10px);
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
                     }
                     .product-card:hover .wishlist-top {
                         opacity: 1 !important;
                     }
-                    .wishlist-top {
-                        transition: opacity 0.3s ease;
-                        backdrop-filter: blur(4px);
-                    }
                     .wishlist-bottom:hover i,
                     .wishlist-top:hover i {
                         color: #e11d48 !important;
-                        transform: scale(1.2);
-                    }
-                    .cart-btn {
-                        width: 48px;
-                        height: 48px;
-                        transition: all 0.3s ease;
-                    }
-                    .cart-btn:hover {
-                        background-color: #000 !important;
-                        transform: translateY(-3px);
+                        transform: scale(1.3);
                     }
                     .line-clamp-2 {
                         display: -webkit-box;
@@ -123,9 +105,8 @@ export default function ProductCard({ item }) {
                         overflow: hidden;
                     }
                     @media (max-width: 480px) {
-                        .fs-5 { font-size: 1.1rem !important; }
-                        .fs-4 { font-size: 1.4rem !important; }
-                        .cart-btn { width: 44px; height: 44px; }
+                        .text-xl { font-size: 1.1rem !important; }
+                        .text-2xl { font-size: 1.5rem !important; }
                     }
                 `}</style>
             </div>
